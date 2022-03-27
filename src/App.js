@@ -10,7 +10,7 @@ function App() {
                 return {
                     display: "block",
                     margin: "1rem 0",
-                    color: isActive ? "red" : "",
+                    color: isActive ? "red" : "black",
                 };
                 }}
                 to={`/goit-react-hw-05-movies`}
@@ -22,7 +22,7 @@ function App() {
                 return {
                     display: "block",
                     margin: "1rem 0",
-                    color: isActive ? "red" : "",
+                    color: isActive ? "red" : "black",
                 };
                 }}
                 to={`/goit-react-hw-05-movies/movies`}

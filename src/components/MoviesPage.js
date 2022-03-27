@@ -20,29 +20,34 @@ export default function MoviesPage() {
                 .then((data) => {
                     console.log(data);
                     setMovies(data.results);
+                    console.log(data.results);
                 });
-        } catch (error) {
-        return console.error(error);
-        }
-  }
-
-
-
+            } catch (error) {
+            return console.error(error);
+            }
+    }
 
 
     const handleSubmit = (event) => {
-        console.log('aaa');
-        console.log(event);
-        event.preventDefaults();
-        if (searchMovies.trim() === '') {
+        event.preventDefault();
+        // console.log(event);
+        // console.log(event.currentTarget);
+        // console.log(event.currentTarget.elements);
+        // console.log(event.currentTarget.elements.search);
+        // console.log(event.currentTarget.elements.search.value);
+        const inputSearch = event.currentTarget.elements.search.value;
+        console.log(inputSearch);
+
+        if (inputSearch.trim() === '') {
             Notiflix.Notify.warning('Please enter a topic to search !');
             return;
         }
         else {
-            setSearchMovies(searchMovies);
+            setSearchMovies(inputSearch);
+            console.log(searchMovies);
             fetchMovies(searchMovies);
         }
-        setSearchMovies('');
+       // setSearchMovies('');
     }
 
 
@@ -60,7 +65,6 @@ export default function MoviesPage() {
                         <button type="submit">
                             Search
                         </button>
-
                     </form>
                     Lista filmów z szukaczką
                 </div>}
