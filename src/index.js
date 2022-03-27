@@ -6,6 +6,11 @@ import './index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import MoviesPage from './components/MoviesPage';
+import MovieDetailsPage from './components/MovieDetailsPage';
+import Cast from './components/Cast';
+import Reviews from './components/Reviews';
+
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,7 +21,12 @@ ReactDOM.render(
             index
             element={<HomePage />}
           />
-          <Route path="/goit-react-hw-05-movies/movies" element={<MoviesPage />} />
+          <Route path="/goit-react-hw-05-movies/movies" element={<MoviesPage />}>
+            <Route path=":movieId" element={<MovieDetailsPage />}>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Route>
+          </Route>
           <Route
             path="*"
             element={
@@ -25,6 +35,7 @@ ReactDOM.render(
               </main>
             }
           />
+          
         </Route>
       </Routes>
     </BrowserRouter>
