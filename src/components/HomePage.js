@@ -24,8 +24,8 @@ export default function HomePage() {
             } else {
                 return response.json();
             }
-        } catch (err) {
-            return console.error(err);
+        } catch (error) {
+            return console.error(error);
         }
     }
     
@@ -36,8 +36,8 @@ export default function HomePage() {
                 setMovies(response);
                 setDone(true);
             })
-            .catch((err) => {
-                console.log(err);
+            .catch((error) => {
+                console.log(error);
             });
     }
 
