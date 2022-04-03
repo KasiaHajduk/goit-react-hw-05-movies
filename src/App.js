@@ -1,34 +1,21 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import './App.css'
+import './App.modules.css';
+import Navigation from './components/Navigation/Navigation';
 
 function App() {
     return (
         <div className="App">
-            Jestem App
-            <NavLink
-                style={({ isActive }) => {
-                return {
-                    display: "block",
-                    margin: "1rem 0",
-                    color: isActive ? "red" : "black",
-                };
-                }}
-                to={`/goit-react-hw-05-movies`}
-            >
-                Home
-            </NavLink>
-            <NavLink
-                style={({ isActive }) => {
-                return {
-                    display: "block",
-                    margin: "1rem 0",
-                    color: isActive ? "red" : "black",
-                };
-                }}
-                to={`/goit-react-hw-05-movies/movies`}
-            >
-                Movies
-            </NavLink>
+            <div className="homeMovies">
+                <Navigation
+                    to={`/goit-react-hw-05-movies`}
+                    where={`Home`}
+                />
+                <Navigation
+                    to={`/goit-react-hw-05-movies/movies`}
+                    where={`Movies`}
+                />
+            </div>
+   
 
             <Outlet />
         </div>

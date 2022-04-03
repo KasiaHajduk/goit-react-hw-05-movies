@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Loader from './Loader';
+import Loader from '../Loader/Loader';
 
 
 

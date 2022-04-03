@@ -4,11 +4,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './components/HomePage';
-import MoviesPage from './components/MoviesPage';
-import MovieDetailsPage from './components/MovieDetailsPage';
-import Cast from './components/Cast';
-import Reviews from './components/Reviews';
+import HomePage from './components/HomePage/HomePage';
+import MoviesPage from './components/MoviesPage/MoviesPage';
+import MovieDetailsPage from './components/MovieDetailsPage/MovieDetailsPage';
+import Cast from './components/Cast/Cast';
+import Reviews from './components/Reviews/Reviews';
 
 
 
