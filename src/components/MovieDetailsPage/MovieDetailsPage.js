@@ -68,7 +68,7 @@ export default function MoviesDetailsPage() {
                                 <li key={id} className="movieGenre"> 
                                     {name}
                                 </li>
-                            )) : 'No movie genre'}
+                            )) : 'No movie genre.'}
                     </p>
                     
 
