@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import Notiflix from 'notiflix';
-import Loader from './Loader';
+//import Loader from './Loader';
 import { Link } from 'react-router-dom';
 
 
@@ -26,14 +26,19 @@ export default function MoviesPage() {
         event.preventDefault();
         if (searchMovies.trim() === '') {
             Notiflix.Notify.warning('Please enter a topic to search !');
+            //setMovies([]);
             return;
         }
         else {
             fetchMovies(searchMovies)
             .then((response) => {
-                //console.log(response);
+                console.log(response);
+                console.log(response.total_pages);
                 setMovies(response);
                 setDone(true);
+                if (!movies.total_pages) {
+                    Notiflix.Notify.warning('No movies found! Please enter a topic to search !');
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -73,20 +78,20 @@ export default function MoviesPage() {
                             Search
                         </button>
                     </form>
-                                <ul className="trendingUl">
-            {isDone === true && (
-                movies.results.map(({ id, original_title }) => (
-                    <li key={id}>
-                        <Link className="trendingLink"
-                            to={`/goit-react-hw-05-movies/movies/${id}`}
-                        >
-                            {original_title}
-                        </Link>
-                    </li>
-                ))
-            )}
-            </ul>
-            </div>}
+                    <ul className="trendingUl">
+                        {isDone === true && (
+                        movies.results.map(({ id, original_title }) => (
+                            <li key={id}>
+                                <Link className="trendingLink"
+                                to={`/goit-react-hw-05-movies/movies/${id}`}
+                                >
+                                {original_title}
+                                </Link> 
+                            </li>
+                        ))
+                        )}
+                    </ul>
+                </div>}
             {params.movieId && < Outlet /> }
         </div>
     );
