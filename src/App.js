@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import './App.modules.css';
 import Navigation from './components/Navigation/Navigation';
 

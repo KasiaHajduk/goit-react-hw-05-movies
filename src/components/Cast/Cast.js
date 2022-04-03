@@ -28,7 +28,6 @@ export default function Cast() {
             .then((response) => {
                 console.log(response);
                 setCast(response.cast);
-                console.log(cast.length);
         })
         .catch((error) => {
             console.log(error);
