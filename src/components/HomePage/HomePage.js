@@ -50,11 +50,11 @@ export default function HomePage() {
     return (
         <div>
             <h1>Trending today</h1>
-            <ul className="trendingUl">
+            <ul>
             {isDone === false ? (<Loader /> ) : (
                 movies.results.map(({ id, original_title }) => (
                     <li key={id}>
-                        <Link className="trendingLink"
+                        <Link
                             to={`/goit-react-hw-05-movies/movies/${id}`}
                         >
                             {original_title}
