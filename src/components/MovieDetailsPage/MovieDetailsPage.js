@@ -1,15 +1,15 @@
 import { Link, Outlet, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import './MovieDetailsPage.modules.css'
-
+import './MovieDetailsPage.modules.css';
+import PropTypes from 'prop-types';
 
 const KEY = '80bf373e681ab9ab4bf0d2d924176b29';
 
-export default function MoviesDetailsPage() {
+function MovieDetailsPage() {
     const { movieId } = useParams();
     const [movie, setMovie] = useState([]);
 
-    console.log(movieId);
+    //console.log(movieId);
 
     async function fetchMovieId(id) {
         try {
@@ -17,7 +17,7 @@ export default function MoviesDetailsPage() {
             if (!response.ok) {
                 throw new Error(response.status);
             } else {
-                console.log(response.json);
+                //console.log(response.json);
                 return response.json();
             }
         } catch (error) {
@@ -28,11 +28,11 @@ export default function MoviesDetailsPage() {
     useEffect(() => {
         fetchMovieId(movieId)
         .then((response) => {
-            console.log(response);
+            //console.log(response);
             setMovie(response);
         })
         .catch((error) => {
-            console.log(error);
+            console.error(error);
         });
     }, [movieId]);
 
@@ -97,3 +97,10 @@ export default function MoviesDetailsPage() {
         </div>
     )
 }
+
+MovieDetailsPage.propTypes = {
+    movieId: PropTypes.number,
+    movie: PropTypes.array,
+};
+
+export default MovieDetailsPage;

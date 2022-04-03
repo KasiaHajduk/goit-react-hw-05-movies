@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import Notiflix from 'notiflix';
-//import Loader from './Loader';
 import { Link } from 'react-router-dom';
 import {ImArrowLeft } from "react-icons/im";
 import './MoviesPage.modules.css';
+import PropTypes from 'prop-types';
+
 
 const KEY = '80bf373e681ab9ab4bf0d2d924176b29';
 
-export default function MoviesPage() {
+function MoviesPage() {
     let navigate = useNavigate();
     let params = useParams();
 
@@ -20,7 +21,7 @@ export default function MoviesPage() {
     const handleChange = event => {
         const value = event.target.value;
         setSearchMovies(value); 
-        console.log(`handleChange ${searchMovies}`);
+        //console.log(`handleChange ${searchMovies}`);
     };
 
     const handleSubmit = event => {
@@ -33,8 +34,8 @@ export default function MoviesPage() {
         else {
             fetchMovies(searchMovies)
             .then((response) => {
-                console.log(response);
-                console.log(response.total_pages);
+                //console.log(response);
+                //console.log(response.total_pages);
                 setMovies(response.results);
                 setDone(true);
                 if (!response.total_pages) {
@@ -100,3 +101,13 @@ export default function MoviesPage() {
         </div>
     );
 }
+
+MoviesPage.propTypes = {
+    movies: PropTypes.array,
+    searhMovies: PropTypes.string,
+    isDone: PropTypes.bool,
+};
+
+export default MoviesPage;
+    
+    

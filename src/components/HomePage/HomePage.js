@@ -2,17 +2,11 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Loader from '../Loader/Loader';
-
-
-
-//import { useEffect } from 'react';
-// import { useCallback } from 'react';
-// import { useEffect } from 'react/cjs/react.production.min';
-// import trendingAPI from '../services/trending-api';
+import PropTypes from 'prop-types';
 
 const KEY = '80bf373e681ab9ab4bf0d2d924176b29';
 
-export default function HomePage() {
+function HomePage() {
     const [movies, setMovies] = useState([]);
     const [isDone, setDone] = useState(false);
   
@@ -66,3 +60,10 @@ export default function HomePage() {
         </div>
     )
 }
+
+HomePage.propTypes = {
+    movies: PropTypes.array,
+    isDone: PropTypes.bool,
+};
+
+export default HomePage;

@@ -2,10 +2,11 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import './Cast.modules.css';
+import PropTypes from 'prop-types';
 
 const KEY = '80bf373e681ab9ab4bf0d2d924176b29';
 
-export default function Cast() {
+function Cast() {
     const { movieId } = useParams();
     const [cast, setCast] = useState([]);
 
@@ -15,7 +16,7 @@ export default function Cast() {
             if (!response.ok) {
                 throw new Error(response.status);
             } else {
-                console.log(response.json);
+               // console.log(response.json);
                 return response.json();
             }
         } catch (error) {
@@ -26,7 +27,7 @@ export default function Cast() {
     useEffect(() => {
         fetchCast(movieId)
             .then((response) => {
-                console.log(response);
+                //console.log(response);
                 setCast(response.cast);
         })
         .catch((error) => {
@@ -62,3 +63,10 @@ export default function Cast() {
         </div>
     )
 }
+
+Cast.propTypes = {
+    movieId: PropTypes.number,
+    cast: PropTypes.object,
+};
+
+export default Cast;

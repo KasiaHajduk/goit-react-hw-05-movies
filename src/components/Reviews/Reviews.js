@@ -1,10 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
+import PropTypes from 'prop-types';
+
 
 const KEY = '80bf373e681ab9ab4bf0d2d924176b29';
 
-export default function Reviews() {
+function Reviews() {
     const { movieId } = useParams();
     const [reviews, setReviews] = useState([]);
 
@@ -14,7 +16,7 @@ export default function Reviews() {
             if (!response.ok) {
                 throw new Error(response.status);
             } else {
-                console.log(response.json);
+                //console.log(response.json);
                 return response.json();
             }
         } catch (error) {
@@ -25,11 +27,11 @@ export default function Reviews() {
     useEffect(() => {
         fetchReviews(movieId)
             .then((response) => {
-                console.log(response);
+                //console.log(response);
                 setReviews(response.results);
         })
         .catch((error) => {
-            console.log(error);
+            console.error(error);
         });
     }, [movieId]);  
 
@@ -51,3 +53,10 @@ export default function Reviews() {
         </div>
     )
 }
+
+Reviews.propTypes = {
+    movieId: PropTypes.number,
+    reviews: PropTypes.object,
+};
+
+export default Reviews;
