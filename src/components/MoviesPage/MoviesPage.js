@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Outlet, useNavigate, useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import Notiflix from 'notiflix';
 //import Loader from './Loader';
 import { Link } from 'react-router-dom';
-
+import {ImArrowLeft } from "react-icons/im";
+import './MoviesPage.modules.css';
 
 const KEY = '80bf373e681ab9ab4bf0d2d924176b29';
 
@@ -34,9 +35,9 @@ export default function MoviesPage() {
             .then((response) => {
                 console.log(response);
                 console.log(response.total_pages);
-                setMovies(response);
+                setMovies(response.results);
                 setDone(true);
-                if (!movies.total_pages) {
+                if (!response.total_pages) {
                     Notiflix.Notify.warning('No movies found! Please enter a topic to search !');
                 }
             })
@@ -61,26 +62,24 @@ export default function MoviesPage() {
     }
 
     return (
-        <div>
-            <button onClick={() => { navigate(-1) }}> Go back </button>
-            Movies Page
+        <div className="moviesPage">
             {!params.movieId &&
                 <div>
                     <form onSubmit={handleSubmit}>
                         <input
+                            className="movieInput"
                             value={searchMovies}
                             type="text"
                             name="search"
                             onChange={handleChange}
                         />
-                            
-                        <button type="submit">
+                        <button className='button' type="submit">
                             Search
                         </button>
                     </form>
-                    <ul className="trendingUl">
+                    <ul>
                         {isDone === true && (
-                        movies.results.map(({ id, original_title }) => (
+                        movies.map(({ id, original_title }) => (
                             <li key={id}>
                                 <Link className="trendingLink"
                                 to={`/goit-react-hw-05-movies/movies/${id}`}
@@ -92,7 +91,12 @@ export default function MoviesPage() {
                         )}
                     </ul>
                 </div>}
-            {params.movieId && < Outlet /> }
+            {params.movieId &&
+                <div>
+                    <button className="button" onClick={() => { navigate(-1) }}><ImArrowLeft/>  Go back </button>
+                    <Outlet />
+                </div>
+            }
         </div>
     );
 }

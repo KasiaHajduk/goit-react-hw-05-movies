@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
+import './Cast.modules.css';
 
 const KEY = '80bf373e681ab9ab4bf0d2d924176b29';
 
@@ -37,24 +38,28 @@ export default function Cast() {
 
 
     return (
-        <ul>
-                {cast.length > 0 ? (
-                    cast.map(({ id, profile_path, name, character }) => (
-                        <li key={id}>
-                            {profile_path !== null ? (
-                                <img
-                                    src={`http://image.tmdb.org/t/p/w200${profile_path}`}
-                                    alt={name}
-                                />
-                            ) : (
-                                    <p>We don't have any foto</p>
-                            )}
-                            <p>{name}</p>
-                            <p>Character: {character}</p>
-                        </li>
-                    ))) : (
-                        <p>We don't have any cast for this movie</p>
-                )}
+        <div>
+            {cast.length > 0 ? (
+            <ul>
+                {cast.map(({ id, profile_path, name, character }) => (
+                    <li key={id} className="cast">
+                        {profile_path !== null ? (
+                        <img className="castProfile"
+                            src={`http://image.tmdb.org/t/p/w200${profile_path}`}
+                            alt={name}
+                        />
+                        ) : (
+                            <p>We don't have any foto.</p>
+                        )}
+                        <p>{name}</p>
+                        <p>Character: {character}</p>
+                    </li>
+                    ))
+                }
             </ul>
+            ): (
+                  <p>We don't have any cast for this movie</p>  
+            )}
+        </div>
     )
 }

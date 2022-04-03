@@ -4,7 +4,7 @@ export default function Navigation({ to, where }) {
     return (
         <NavLink
             className={({ isActive }) =>
-                isActive ? "active" : "inactive"
+                isActive ? "navigation active" : "navigation inactive"
             }
             to={to}
         >   {where}

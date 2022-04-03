@@ -5,18 +5,17 @@ import Navigation from './components/Navigation/Navigation';
 function App() {
     return (
         <div className="App">
-            <div className="homeMovies">
+            <div className="navigation">
                 <Navigation
-                    to={`/goit-react-hw-05-movies`}
+                    to={`/goit-react-hw-05-movies/`}
                     where={`Home`}
                 />
                 <Navigation
-                    to={`/goit-react-hw-05-movies/movies`}
+                    to={`/goit-react-hw-05-movies/movies/`}
                     where={`Movies`}
                 />
             </div>
-   
-
+            <hr></hr>
             <Outlet />
         </div>
     )

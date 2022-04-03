@@ -49,7 +49,7 @@ export default function HomePage() {
 
     return (
         <div>
-            <h1> Trending today</h1>
+            <h1>Trending today</h1>
             <ul className="trendingUl">
             {isDone === false ? (<Loader /> ) : (
                 movies.results.map(({ id, original_title }) => (

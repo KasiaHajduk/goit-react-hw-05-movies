@@ -16,12 +16,12 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/goit-react-hw-05-movies" element={<App />}>
+        <Route path="/goit-react-hw-05-movies/" element={<App />}>
           <Route
             index
             element={<HomePage />}
           />
-          <Route path="/goit-react-hw-05-movies/movies" element={<MoviesPage />}>
+          <Route path="/goit-react-hw-05-movies/movies/" element={<MoviesPage />}>
             <Route path=":movieId" element={<MovieDetailsPage />}>
               <Route path="cast" element={<Cast />} />
               <Route path="reviews" element={<Reviews />} />

@@ -1,5 +1,6 @@
 import { Link, Outlet, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import './MovieDetailsPage.modules.css'
 
 
 const KEY = '80bf373e681ab9ab4bf0d2d924176b29';
@@ -45,10 +46,10 @@ export default function MoviesDetailsPage() {
     } = movie;
 
     return (
-        <div> Movie Details Page 
-        <div >
+        <div>
+        <div className="movieMain">
             <div >
-                    <img
+                    <img className="movieImg"
                         src={`http://image.tmdb.org/t/p/w500${poster_path}`}
                         alt="poster"
                     />
@@ -61,12 +62,10 @@ export default function MoviesDetailsPage() {
                 <h2>Overview</h2>
                     <p>{overview}</p>
                 <h2>Genres</h2>
-                    <p>
-                        {/* {console.log(genres)}
-                        {console.log(genres[0].name)} */}
+                    <p className="movieGenres">
                         { genres !== undefined ?
                             genres.map(({id, name}) => (
-                                <li key={id}>
+                                <li key={id} className="movieGenre"> 
                                     {name}
                                 </li>
                             )) : 'No movie genre'}
@@ -75,10 +74,10 @@ export default function MoviesDetailsPage() {
 
             </div>
       </div>
-      {/* //<HorizontalLine /> */}
+      <hr></hr>
       <div >
         <h2>Additional information</h2>
-        <ul >
+        <ul>
           <li>
             <Link
                 to={`/goit-react-hw-05-movies/movies/${movieId}/cast`} >
@@ -87,16 +86,13 @@ export default function MoviesDetailsPage() {
           </li>
           <li>
             <Link
-                            to={`/goit-react-hw-05-movies/movies/${movieId}/reviews`}>
-              Reviews              
-              </Link>
-              
-            </li>
+                to={`/goit-react-hw-05-movies/movies/${movieId}/reviews`}>
+                Reviews              
+            </Link>
+          </li>
         </ul>
       </div> 
-      {/* <HorizontalLine /> */}
-
-
+        <hr></hr>  
             <Outlet />
         </div>
     )

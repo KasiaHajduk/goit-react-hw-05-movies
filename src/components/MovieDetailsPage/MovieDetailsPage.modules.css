@@ -1,0 +1,27 @@
+.movieMain {
+    display: flex;
+
+}
+
+h2 {
+    margin-top: 40px;
+}
+
+.movieImg {
+    height: 400px;
+    margin-right: 30px;
+}
+
+.movieGenres {
+    display: flex;
+    /* justify-content: space-between; */
+
+    
+    /* display: grid; */
+    /* //flex-direction: row; */
+}
+
+.movieGenre {
+    margin-right: 15px;
+    list-style-type: none;
+}
